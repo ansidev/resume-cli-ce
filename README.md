@@ -8,6 +8,7 @@ This repository contains releases of resume-cli.
 
 ```sh
 brew tap ansidev/resume-cli-ce https://github.com/ansidev/resume-cli-ce
+brew trust --formula ansidev/resume-cli-ce/resume-cli
 brew install resume-cli
 ```
 
