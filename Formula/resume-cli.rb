@@ -5,21 +5,21 @@ class ResumeCli < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/ansidev/resume-cli-ce/releases/download/v0.2.0/resume-cli_0.2.0_darwin_arm64.tar.gz"
-      sha256 "45ec232a8df43eba2857303879a31d136f879994bdb26f4e8369724192bf1661"
+      url "https://github.com/ansidev/resume-cli-ce/releases/download/v0.3.0/resume-cli_0.3.0_darwin_arm64.tar.gz"
+      sha256 "12b05f7941fe36eab032a8977d264bc6e401820c59e12a257c0dd8b64725ee96"
     else
-      url "https://github.com/ansidev/resume-cli-ce/releases/download/v0.2.0/resume-cli_0.2.0_darwin_amd64.tar.gz"
-      sha256 "d8c852c2f2190558e62426ab5068f0d7d74518cb921282866773141d5b7e80f1"
+      url "https://github.com/ansidev/resume-cli-ce/releases/download/v0.3.0/resume-cli_0.3.0_darwin_amd64.tar.gz"
+      sha256 "e4f9c0d0e8b42b231b0baab0178010e5b02a67120e1736545055e46ed7e68cfe"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/ansidev/resume-cli-ce/releases/download/v0.2.0/resume-cli_0.2.0_linux_arm64.tar.gz"
-      sha256 "0a273aa7a340cd003244aee7185d15536eb7d46edd10d2fb31530cd76223877c"
+      url "https://github.com/ansidev/resume-cli-ce/releases/download/v0.3.0/resume-cli_0.3.0_linux_arm64.tar.gz"
+      sha256 "864f0f16c8a6f0e60663b180b2fc36d3419bbd57f295c06f5c2bb699fca7967b"
     else
-      url "https://github.com/ansidev/resume-cli-ce/releases/download/v0.2.0/resume-cli_0.2.0_linux_amd64.tar.gz"
-      sha256 "335899d5b9446e6c7e74af90745a4f4bfef6c2baef8b9c16b5ee3ee1abe14cdd"
+      url "https://github.com/ansidev/resume-cli-ce/releases/download/v0.3.0/resume-cli_0.3.0_linux_amd64.tar.gz"
+      sha256 "ceb6a4990e7b7fa85915b5a49c240066fc5021a66d3f53bf6aa876accd088d6e"
     end
   end
 
