@@ -1,0 +1,48 @@
+name: Update Homebrew formula
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to publish into the formula (e.g. v0.2.0)
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-homebrew-formula
+  cancel-in-progress: false
+
+jobs:
+  update-formula:
+    # Prereleases and drafts must not reach Homebrew users.
+    if: github.event_name == 'workflow_dispatch' || (!github.event.release.prerelease && !github.event.release.draft)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Rewrite formula
+        env:
+          TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: bash .github/scripts/update-formula.sh "$TAG"
+
+      - name: Commit and push
+        env:
+          TAG: ${{ github.event.release.tag_name || inputs.tag }}
+          BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          if git diff --quiet -- Formula/resume-cli.rb; then
+            echo "Formula already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Formula/resume-cli.rb
+          git commit -m "chore: update Homebrew formula to ${TAG}"
+          git push origin "HEAD:${BRANCH}"
